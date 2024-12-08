@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Interface - Finance Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("{% static 'images/background.png' %}") no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.7); /* White overlay for low opacity effect */
+            color: #333;
+        }
+
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .dashboard-container {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .dashboard-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 1rem auto;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .dashboard-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: #004643;
+        }
+
+        .dashboard-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-card p {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .dashboard-card button {
+            background-color: #f9bc60;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-card button:hover {
+            background-color: #f8961e;
+        }
+
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav>
+            <div class="logo">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'employee_dashboard' %}">Dashboard</a></li>
+                <li><a href="#">Employee Details</a></li>
+                <li><a href="#">Tasks</a></li>
+                <li><a href="#">Performance</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-container">
+        <!-- Employee Details Card -->
+        <div class="dashboard-card">
+            <h3>Employee Details</h3>
+            <img src="{% static 'images/image1.jpg' %}" alt="Employee Details">
+            <p>View and update employee information, contact details, and job roles.</p>
+            <button>View Details</button>
+        </div>
+
+        <!-- Task Management Card -->
+        <div class="dashboard-card">
+            <h3>Task Management</h3>
+            <img src="{% static 'images/image2.jpg' %}" alt="Task Management">
+            <p>Assign and track tasks, set deadlines, and monitor progress.</p>
+            <button onclick="window.location.href='{% url 'view_expenses' %}'">Manage Tasks</button>
+        </div>
+
+        <!-- Performance Tracking Card -->
+        <div class="dashboard-card">
+            <h3>Performance Tracking</h3>
+            <img src="{% static 'images/image3.jpg' %}" alt="Performance Tracking">
+            <p>Monitor employee performance, generate reports, and provide feedback.</p>
+            <button>Track Performance</button>
+        </div>
+
+        <!-- EMI Calculator -->
+        <div class="dashboard-card">
+            <h3>EMI Calculator</h3>
+            <img src="{% static 'images/image4.jpg' %}" alt="EMI Calculator">
+            <p>Calculate your monthly EMI for better financial planning.</p>
+            <button onclick="window.location.href='{% url 'emi_calculator' %}'">Calculate EMI</button>
+        </div>
+
+        <!-- Tax Calculator -->
+        <div class="dashboard-card">
+            <h3>Tax Calculator</h3>
+            <img src="{% static 'images/image5.jpg' %}" alt="Tax Calculator">
+            <p>Estimate your income tax based on salary and other details.</p>
+            <button onclick="window.location.href='{% url 'tax_calculator' %}'">Go to Tax Calculator</button>
+        </div>
+
+        <!-- Currency Converter -->
+        <div class="dashboard-card">
+            <h3>Currency Converter</h3>
+            <img src="{% static 'images/image6.jpg' %}" alt="Currency Converter">
+            <p>Convert amounts between different currencies with live exchange rates.</p>
+            <button onclick="window.location.href='{% url 'currency_converter' %}'">Convert Currency</button>
+        </div>
+
+        <!-- Manage Income -->
+        <div class="dashboard-card">
+            <h3>Income Management</h3>
+            <img src="{% static 'images/image7.jpg' %}" alt="Income Management">
+            <p>Manage your salary, budget overview, and track your expenses effectively.</p>
+            <button onclick="window.location.href='{% url 'add_salary' %}'">Manage Income</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+</body>
+</html>

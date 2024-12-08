@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator - Finance Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        /* Main content styles */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top to avoid content being stuck at the center */
+            padding: 2rem;
+        }
+
+        .emi-calculator-container {
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            margin-bottom: 2rem; /* Ensure space between card and footer */
+        }
+
+        .emi-calculator-container h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .emi-calculator-container label {
+            display: block;
+            text-align: left;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .emi-calculator-container input {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .emi-calculator-container button {
+            background-color: #f9bc60;
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .emi-calculator-container button:hover {
+            background-color: #f8961e;
+        }
+
+        .result {
+            margin-top: 1.5rem; /* Added space above result */
+            padding: 1rem;
+            background-color: #e7f3e7;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-align: center; /* Align text to center */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto; /* Ensure footer stays at the bottom */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav>
+            <div class="logo" onclick="window.location.href='{% url 'employee_homepage' %}'">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'employee_dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'add_expense' %}">Add Expense</a></li>
+                <li><a href="{% url 'view_expenses' %}">View Expenses</a></li>
+                <li><a href="{% url 'emi_calculator' %}">EMI Calculator</a></li>
+                <li><a href="{% url 'tax_calculator' %}">Tax Calculator</a></li>
+                <li><a href="{% url 'currency_converter' %}">Currency Converter</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- EMI Calculator Section -->
+    <main>
+        <div class="emi-calculator-container">
+            <h2>EMI Calculator</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="loan_amount">Loan Amount (₹):</label>
+                <input type="number" id="loan_amount" name="loan_amount" placeholder="Enter loan amount" required>
+
+                <label for="interest_rate">Interest Rate (%):</label>
+                <input type="number" id="interest_rate" name="interest_rate" placeholder="Enter annual interest rate" required>
+
+                <label for="loan_term">Loan Term (in years):</label>
+                <input type="number" id="loan_term" name="loan_term" placeholder="Enter loan term in years" required>
+
+                <button type="submit">Calculate EMI</button>
+            </form>
+
+            {% if emi_amount %}
+                <div class="result">
+                    <strong>EMI Amount:</strong> ₹{{ emi_amount }}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

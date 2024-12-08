@@ -1,0 +1,54 @@
+<!-- add_salary.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Salary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Use your existing theme styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .container button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #f9bc60;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Monthly Salary</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" required placeholder="Enter your salary">
+            <button type="submit">Save Salary</button>
+        </form>
+    </div>
+</body>
+</html>

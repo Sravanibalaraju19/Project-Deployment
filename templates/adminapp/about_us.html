@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FinancePro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .about-us {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: white;
+            flex: 1;
+        }
+
+        .about-us h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #004643;
+        }
+
+        .about-us p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .about-us .cta-btn {
+            padding: 1rem 2rem;
+            background-color: #f9bc60;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .about-us .cta-btn:hover {
+            background-color: #f8961e;
+        }
+
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-us {
+                padding: 2rem;
+            }
+
+            .about-us h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo" onclick="window.location.href='{% url 'employee_homepage' %}'">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-us">
+        <h1>About Us</h1>
+        <p>FinancePro is dedicated to helping individuals and businesses manage their finances more effectively.
+            Our platform offers a range of tools designed to simplify budgeting, expense tracking, and investment management.
+            Whether you are new to personal finance or an experienced investor, FinancePro helps you take control of your financial future.</p>
+
+        <p>Our mission is to empower our users with the tools and insights they need to make informed financial decisions.
+            We believe that financial literacy is key to building a secure future, and we are here to guide you every step of the way.</p>
+
+        <button class="cta-btn">Get Started</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctaButton = document.querySelector('.cta-btn');
+
+            ctaButton.addEventListener('click', function () {
+                alert('Welcome to FinancePro! Start managing your finances today.');
+            });
+        });
+    </script>
+</body>
+
+</html>

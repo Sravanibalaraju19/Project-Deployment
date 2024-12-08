@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Expenses - Finance Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Add your theme styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body stretches to full height */
+        }
+
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .expense-list {
+            flex: 1; /* Allow this section to take remaining space */
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .expense-list h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .expense-list ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .expense-list li {
+            background-color: #ffffff;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo" onclick="window.location.href='{% url 'employee_homepage' %}'">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'employee_dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'add_expense' %}">Add Expense</a></li>
+                <li><a href="{% url 'view_expenses' %}">View Expenses</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="expense-list">
+        <h2>Your Expenses</h2>
+        <ul>
+            {% for expense in Expenses %}
+                <li>{{ expense.label }}: ${{ expense.amount }} (Category: {{ expense.category }})</li>
+            {% empty %}
+                <li>No expenses added yet.</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

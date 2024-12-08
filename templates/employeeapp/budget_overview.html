@@ -1,0 +1,47 @@
+<!-- budget_overview.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Use your existing theme styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container .budget-item {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Budget Overview</h2>
+        <div class="budget-item">
+            <strong>Your Salary: </strong> {{ salary }}
+        </div>
+        <div class="budget-item">
+            <strong>Housing Budget (30%): </strong> {{ housing_budget }}
+        </div>
+        <div class="budget-item">
+            <strong>Food Budget (20%): </strong> {{ food_budget }}
+        </div>
+        <div class="budget-item">
+            <strong>Savings Budget (10%): </strong> {{ savings_budget }}
+        </div>
+    </div>
+</body>
+</html>

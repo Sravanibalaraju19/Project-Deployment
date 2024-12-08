@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #00c2ba, #004643);
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            background-color: #f9bc60;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #f8961e;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .feature-card {
+            background-color: #004643;
+            padding: 2rem;
+            width: 30%;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-card {
+                width: 80%;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo" onclick="window.location.href='{% url 'employee_homepage' %}'">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 style="color: white;">Manage Your Finances With Ease</h1>
+            <p style="color: white;"> Track your spending, budget efficiently, and grow your savings with our intuitive finance management tools.</p>
+            <button class="cta-btn">Get Started</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Expense Tracking</h3>
+            <p>Easily track your daily, weekly, and monthly expenses and visualize your spending patterns.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Budget Planning</h3>
+            <p>Set up customized budgets to meet your financial goals and monitor your progress.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Investment Insights</h3>
+            <p>Get real-time insights into your investment portfolios and growth projections.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctaButton = document.querySelector('.cta-btn');
+
+            ctaButton.addEventListener('click', function () {
+                alert('Welcome to FinancePro! Your journey to better financial management begins now.');
+            });
+        });
+    </script>
+</body>
+
+</html>

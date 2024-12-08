@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expense - Finance Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Add your theme styles here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes at least the full viewport height */
+        }
+
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .expense-form {
+            flex: 1; /* Allow the form container to take remaining space */
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .expense-form h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .expense-form form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .expense-form input, .expense-form select {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem; /* Space between input boxes */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .expense-form button {
+            background-color: #f9bc60;
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expense-form button:hover {
+            background-color: #f8961e;
+        }
+
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo" onclick="window.location.href='{% url 'employee_homepage' %}'">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'employee_dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'add_expense' %}">Add Expense</a></li>
+                <li><a href="{% url 'view_expenses' %}">View Expenses</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="expense-form">
+        <h2>Add Your Expense</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Expense</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

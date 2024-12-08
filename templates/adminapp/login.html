@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Finance Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004643;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f7f7f7;
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .login-card {
+            background-color: #004643;
+            padding: 2rem;
+            width: 35%;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;
+        }
+
+        .login-card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .login-card form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-card input {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .login-card button {
+            padding: 0.75rem 2rem;
+            background-color: #f9bc60;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-card button:hover {
+            background-color: #f8961e;
+        }
+
+        footer {
+            background-color: #004643;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .login-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <header>
+        <nav>
+            <div class="logo" onclick="window.location.href='{% url 'employee_homepage' %}'">FinancePro</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-container">
+        <div class="login-card">
+            <h3>Login to your Account</h3>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                {% if messages %}
+                <ul >
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <div class="row mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember_me" checked>
+                            <label class="form-check-label" for="remember_me">Remember me</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+
+                <div class="text-center">
+                    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 FinancePro. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
